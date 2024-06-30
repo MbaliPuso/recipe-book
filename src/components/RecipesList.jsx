@@ -72,7 +72,7 @@ const ListRecipes = () => {
                               <div className='card-body text-center'>
                               <div className='title fw-bold mb-2'>{recipe.title}</div>
                               <div className='fw-bold mb-3'>{recipe.description}</div>
-                              <button type="button" className='btn btn-primary d-block m-auto'><Link to='/recipe-details'>Recipe Details</Link></button>
+                              <button type="button" className='btn btn-warning d-block m-auto'><Link to='/recipe-details'>Recipe Details</Link></button>
                               </div>
                            </div>
                     </div>
