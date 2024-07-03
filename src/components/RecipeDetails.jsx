@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { data }  from "./RecipesList";
+import { displayData }  from "./RecipesList";
 import recipeOne from '../assets/spaghetti-bolognese.png';
 import recipeTwo from '../assets/chicken-curry.jpg';
 import recipeThree from '../assets/margherita-pizza.jpg';
@@ -11,8 +11,12 @@ import recipeSix from '../assets/grilled-salmon.png';
 
 const RecipeDetails = () => {
     
-  
-     /* 0 - id,
+
+
+    const [info, setInfo] = useState(displayData)
+
+
+    /*
     1 - title,
     2 - description,
     3 - ingredients,
@@ -20,19 +24,15 @@ const RecipeDetails = () => {
     5 - image
     */
 
+    const title = info[0];
+    const description = info[1];
+    const ingredients = info[2];
+    const steps = info[3];
+    const image = info[4];
 
-    
-    
-    const title = data[0];
-    const description = data[1];
-    const ingredients = data[2];
-    const steps = data[3];
-    const image = data[4];
-    
 
     return(
     <>
-
 
     <h1>{title}</h1> <hr />
 
@@ -46,7 +46,7 @@ const RecipeDetails = () => {
         {                   
         ingredients.map((ingredient, index) => (
          <li key = {index}>
-            {ingredients[index]}   
+            {ingredient}   
          </li>
         ))
         }
@@ -60,7 +60,7 @@ const RecipeDetails = () => {
         {                   
         steps.map((step, index) => (
          <li key = {index}>
-            {steps[index]}   
+            {step}   
          </li>
         ))
         }
@@ -70,10 +70,7 @@ const RecipeDetails = () => {
     <button type="button" className='btn btn-warning d-block m-auto'><Link to='/list-recipes'>Back to recipes</Link></button>
  
     </>
-
-    
 )
-
 }
 
 export default RecipeDetails;

@@ -1,12 +1,13 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import recipeOne from '../assets/spaghetti-bolognese.png';
 import recipeTwo from '../assets/chicken-curry.jpg';
 import recipeThree from '../assets/margherita-pizza.jpg';
 import recipeFour from '../assets/beef-taco.jpg';
 import recipeFive from '../assets/stir-fry.jpg';
 import recipeSix from '../assets/grilled-salmon.png';
+import { useState } from 'react';
 
 
 const recipes = [
@@ -54,21 +55,12 @@ const recipes = [
     }
 ];
 
-//our data we will be exporting
-let data;
+
+
+let displayData
+
 
 const ListRecipes = () => {
-
-      
-      const [recipeDisplayData, setData] = useState([
-            recipes[0].title,
-            recipes[0].description,
-            recipes[0].ingredients,
-            recipes[0].steps,
-            recipes[0].image]);
-
-        console.log(recipeDisplayData)
-
 
     return (
         <div>
@@ -81,21 +73,13 @@ const ListRecipes = () => {
                               <img src={recipe.image} alt={recipe.title} />
                               <div className='card-body text-center'>
                               <div className='title fw-bold mb-2'>{recipe.title}</div>
-                              <div className='fw-bold mb-3'>{recipe.description}</div>
-                              <button type="button" className='btn btn-warning d-block m-auto' onClick={() => {setData(
-                                    [
-                                    recipe.title,
-                                    recipe.description,
-                                    recipe.ingredients,
-                                    recipe.steps,
-                                    recipe.image 
-                                    ])
-                                    
-                                    data = recipeDisplayData
-                                    
-                                    }}>                                         
-                              <Link to='/recipe-details'>Recipe Details</Link>
-                              </button>
+                              <div className='fw-bold mb-3'>{recipe.description}</div>                            
+                              <button type="button" className='btn btn-warning d-block m-auto' onClick = {() => {                               
+                                const recipeData = [recipe.title, recipe.description, recipe.ingredients, recipe.steps, recipe.image]                                                          
+                                displayData = recipeData;
+                                }}>
+                                <Link to='/recipe-details'>Recipe Details</Link>
+                                </button>
                               </div>
                            </div>
                     </div>
@@ -107,4 +91,4 @@ const ListRecipes = () => {
 };
 
 export default ListRecipes;
-export {data};
+export { displayData }
