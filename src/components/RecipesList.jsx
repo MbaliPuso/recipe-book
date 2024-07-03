@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import recipeOne from '../assets/spaghetti-bolognese.png';
 import recipeTwo from '../assets/chicken-curry.jpg';
 import recipeThree from '../assets/margherita-pizza.jpg';
@@ -10,7 +11,6 @@ import recipeSix from '../assets/grilled-salmon.png';
 
 const recipes = [
     {
-        id: 1,
         title: 'Spaghetti Bolognese',
         description: 'A classic Italian pasta dish with rich meat sauce.',
         ingredients: ['200g Spaghetti', '200g Ground beef', '1 can Tomato sauce', '1 Onion, chopped', '2 cloves garlic, minced', '2 tbsp olive oil'],
@@ -18,7 +18,6 @@ const recipes = [
         image: recipeOne
     },
     {
-        id: 2,
         title: 'Chicken Curry',
         description: 'A flavorful and spicy chicken curry.',
         ingredients: ['500g Chicken', '1 can coconut milk', '2 tbsp curry powder', '1 onion, chopped', '3 cloves garlic, minced', '1 tbsp ginger, minced'],
@@ -26,7 +25,6 @@ const recipes = [
         image: recipeTwo
     },
     {
-        id: 3,
         title: 'Margherita Pizza',
         description: 'A simple yet delicious pizza with fresh tomatoes, mozzarella, and basil.',
         ingredients: ['1 pizza dough', '1/2 cup tomato sauce', '2 cups mozzarella cheese, shredded', '2 tomatoes, sliced', 'Fresh basil leaves', '1 tbsp olive oil', 'Salt and pepper to taste'],
@@ -34,7 +32,6 @@ const recipes = [
         image: recipeThree
     },
     {
-        id: 4,
         title: 'Beef Tacos',
         description: 'Mexican-style tacos with seasoned beef and fresh toppings.',
         ingredients: ['300g ground beef', '1 taco seasoning packet', '8 taco shells', '1 cup shredded lettuce', '1 cup diced tomatoes', '1/2 cup shredded cheese'],
@@ -42,7 +39,6 @@ const recipes = [
         image: recipeFour
     },
     {
-        id: 5,
         title: 'Vegetable Stir-Fry',
         description: 'A quick and healthy stir-fry with a mix of fresh vegetables.',
         ingredients: ['1 bell pepper, sliced', '1 carrot, sliced', '1 broccoli head, cut into florets', '1 cup snap peas', '2 tbsp soy sauce', '1 tbsp olive oil'],
@@ -50,7 +46,6 @@ const recipes = [
         image: recipeFive
     },
     {
-        id: 6,
         title: 'Grilled Salmon',
         description: 'A simple and healthy grilled salmon with a lemon garlic sauce.',
         ingredients: ['4 salmon fillets', '2 tbsp olive oil', '2 cloves garlic, minced', 'Juice of 1 lemon', 'Salt and pepper to taste', 'Fresh dill, garnish'],
@@ -59,21 +54,21 @@ const recipes = [
     }
 ];
 
-
-let recipeDisplayData;
+//our data we will be exporting
+let data;
 
 const ListRecipes = () => {
 
-    const updateRecipe = (index) => {
-        
-       recipeDisplayData = [
-        recipes[index].id,
-        recipes[index].title,
-        recipes[index].description,
-        recipes[index].ingredients,
-        recipes[index].steps,
-        recipes[index].image]
-    }
+      
+      const [recipeDisplayData, setData] = useState([
+            recipes[0].title,
+            recipes[0].description,
+            recipes[0].ingredients,
+            recipes[0].steps,
+            recipes[0].image]);
+
+        console.log(recipeDisplayData)
+
 
     return (
         <div>
@@ -87,7 +82,20 @@ const ListRecipes = () => {
                               <div className='card-body text-center'>
                               <div className='title fw-bold mb-2'>{recipe.title}</div>
                               <div className='fw-bold mb-3'>{recipe.description}</div>
-                              <button type="button" className='btn btn-warning d-block m-auto' onClick={() => updateRecipe(index)}><Link to='/recipe-details'>Recipe Details</Link></button>
+                              <button type="button" className='btn btn-warning d-block m-auto' onClick={() => {setData(
+                                    [
+                                    recipe.title,
+                                    recipe.description,
+                                    recipe.ingredients,
+                                    recipe.steps,
+                                    recipe.image 
+                                    ])
+                                    
+                                    data = recipeDisplayData
+                                    
+                                    }}>                                         
+                              <Link to='/recipe-details'>Recipe Details</Link>
+                              </button>
                               </div>
                            </div>
                     </div>
@@ -99,4 +107,4 @@ const ListRecipes = () => {
 };
 
 export default ListRecipes;
-export {recipeDisplayData};
+export {data};

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {recipeDisplayData}  from "./RecipesList";
+import { data }  from "./RecipesList";
 import recipeOne from '../assets/spaghetti-bolognese.png';
 import recipeTwo from '../assets/chicken-curry.jpg';
 import recipeThree from '../assets/margherita-pizza.jpg';
@@ -9,7 +9,7 @@ import recipeFive from '../assets/stir-fry.jpg';
 import recipeSix from '../assets/grilled-salmon.png';
 
 
-const recipeDetails = () => {
+const RecipeDetails = () => {
     
   
      /* 0 - id,
@@ -21,12 +21,15 @@ const recipeDetails = () => {
     */
 
 
-    const title = recipeDisplayData[1];
-    const description = recipeDisplayData[2];
-    const ingredients = recipeDisplayData[3];
-    const steps = recipeDisplayData[4];
-    const image = recipeDisplayData[5];
     
+    
+    const title = data[0];
+    const description = data[1];
+    const ingredients = data[2];
+    const steps = data[3];
+    const image = data[4];
+    
+
     return(
     <>
 
@@ -67,8 +70,10 @@ const recipeDetails = () => {
     <button type="button" className='btn btn-warning d-block m-auto'><Link to='/list-recipes'>Back to recipes</Link></button>
  
     </>
+
+    
 )
 
 }
 
-export default recipeDetails;
+export default RecipeDetails;
