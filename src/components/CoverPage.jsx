@@ -1,23 +1,18 @@
 import React from 'react';
+import '../styles.css'
 import { Link } from 'react-router-dom';
-import cover from '../assets/cookbook-coverpage.png';
+import cover from '../assets/coverpage.png';
 
 const CoverPage = () => {
     const coverStyle = {
-        height: '100vh',
-        width: '100vw',
         backgroundImage: `url(${cover})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-
     };
 
     return (
-        <div style={coverStyle}>
-            <button className='next-page-button'><Link to="/list-recipes">Next Page</Link></button>
+        <div className='cover-image' style={coverStyle}>
+            <div className='container'>
+            <Link to="/list-recipes" className='list-recipes-link'>See Recipes</Link>
+            </div>
         </div>
     );
 };
