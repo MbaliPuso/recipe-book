@@ -3,16 +3,9 @@ import { Link } from 'react-router-dom';
 import { displayData }  from "./RecipesList";
 import detailsBackground from '../assets/details-background.png';
 import '../styles.css';
-// import recipeOne from '../assets/spaghetti-bolognese.png';
-// import recipeTwo from '../assets/chicken-curry.jpg';
-// import recipeThree from '../assets/margherita-pizza.jpg';
-// import recipeFour from '../assets/beef-taco.jpg';
-// import recipeFive from '../assets/stir-fry.jpg';
-// import recipeSix from '../assets/grilled-salmon.png';
 
 const RecipeDetails = () => {
-    const [info, setInfo] = useState(displayData)
-
+    const [info] = useState(displayData)
 
     /*
     1 - title,
