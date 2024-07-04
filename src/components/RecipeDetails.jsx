@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { displayData }  from "./RecipesList";
-import recipeOne from '../assets/spaghetti-bolognese.png';
-import recipeTwo from '../assets/chicken-curry.jpg';
-import recipeThree from '../assets/margherita-pizza.jpg';
-import recipeFour from '../assets/beef-taco.jpg';
-import recipeFive from '../assets/stir-fry.jpg';
-import recipeSix from '../assets/grilled-salmon.png';
-
+import detailsBackground from '../assets/details-background.png';
+import '../styles.css';
+// import recipeOne from '../assets/spaghetti-bolognese.png';
+// import recipeTwo from '../assets/chicken-curry.jpg';
+// import recipeThree from '../assets/margherita-pizza.jpg';
+// import recipeFour from '../assets/beef-taco.jpg';
+// import recipeFive from '../assets/stir-fry.jpg';
+// import recipeSix from '../assets/grilled-salmon.png';
 
 const RecipeDetails = () => {
-    
-
-
     const [info, setInfo] = useState(displayData)
 
 
@@ -30,47 +28,51 @@ const RecipeDetails = () => {
     const steps = info[3];
     const image = info[4];
 
+    const detailStyle = {
+        backgroundImage: `url(${detailsBackground})`,
+    }
 
-    return(
-    <>
 
-    <h1>{title}</h1> <hr />
+    return (
+    <div className='container' style={detailStyle}>
 
-    <img alt={title} src={image}></img>
-    
-    <h2>{description}</h2> <hr />
+    <h1>{title}</h1> 
 
-    <h3> Ingredients </h3> <hr /> 
-        
-    <ul>            
-        {                   
-        ingredients.map((ingredient, index) => (
-         <li key = {index}>
-            {ingredient}   
-         </li>
-        ))
-        }
-    </ul>
+    <p>{description}</p>
+    <div className='row'>
+        <div className='col-md-8'>
+            <h5> Ingredients </h5>
+            <ul className='list-unstyled'>            
+                {ingredients.map((ingredient, index) => (
+                    <li key = {index} className="d-flex align-items-start mb-2">
+                        <span className="badge bg-primary me-2">{index + 1}</span>
+                        {ingredient}   
+                    </li>
+                ))}
+            </ul>
+        </div>
+        <div className="col-md-4">
+            <img alt={title} src={image} className="img-fluid" />
+        </div>
+    </div>
 
-   
-
-    <h3> Steps </h3> <hr />
-
+    <div>
+        <h5>Preparation Steps</h5> 
     <ul>            
         {                   
         steps.map((step, index) => (
-         <li key = {index}>
+         <li key = {index} className='mb-2'>
             {step}   
          </li>
         ))
         }
     </ul>
-
-
+    </div>
+    
     <button type="button" className='btn btn-warning d-block m-auto'><Link to='/list-recipes'>Back to recipes</Link></button>
  
-    </>
-)
+    </div>
+);
 }
 
 export default RecipeDetails;

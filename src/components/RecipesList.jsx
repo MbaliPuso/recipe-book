@@ -7,8 +7,6 @@ import recipeThree from '../assets/margherita-pizza.jpg';
 import recipeFour from '../assets/beef-taco.jpg';
 import recipeFive from '../assets/stir-fry.jpg';
 import recipeSix from '../assets/grilled-salmon.png';
-import { useState } from 'react';
-
 
 const recipes = [
     {
@@ -63,8 +61,8 @@ let displayData
 const ListRecipes = () => {
 
     return (
-        <div>
-            <h1>Recipes</h1>
+        <div> 
+            <h1 className='text-center'>Recipes</h1><hr/>
             <div className="container recipes-list">
                 <div className='row'>
                 {recipes.map((recipe, index) => (
